@@ -15,15 +15,10 @@ Explanation: Because nums[0] + nums[1] == 9, we return [0, 1]."""
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-      
-     lista = []
-     tamanho_da_lista = len(nums)
-     while tamanho_da_lista > 0:
-        index = tamanho_da_lista - 1
-        for indice in range(tamanho_da_lista - 1):
-            if nums[indice] + nums[index] == target:
-                lista.append(indice)
-                lista.append(index)
-                return lista
-        tamanho_da_lista -= 1
+            newDict = {} # Use HashMap
+            for index,value in enumerate(nums):
+                diff = target - value
+                if diff in newDict:
+                    return [newDict[diff], index]
+            newDict[value] = index
 
